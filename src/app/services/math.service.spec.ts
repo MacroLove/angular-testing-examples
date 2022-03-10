@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { LoggerService } from './logger.service';
 
 import { MathService } from './math.service';
 
@@ -15,11 +16,8 @@ describe('MathService', () => {
   });
 
   it('should divide two numbers', () => {
+    // fail(); // Simulate a failing test case
     pending(); // Indicates to jasmine that this test is not yet ready to execute
-  });
-
-  it('should multiple two numbers', () => {
-    fail(); // Simulate a failing test case
   });
 
 
