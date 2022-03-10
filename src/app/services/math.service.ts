@@ -13,7 +13,7 @@ export class MathService {
     return n1 + n2;
   }
 
-  public sub(n1: number, n2: number): number {
+  public subtract(n1: number, n2: number): number {
     this.logger.log("sub operation called");
     return n1 - n2;
   }
