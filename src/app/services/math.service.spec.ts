@@ -14,11 +14,13 @@ describe('MathService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should sum two numbers', () => {
+  it('should divide two numbers', () => {
     pending(); // Indicates to jasmine that this test is not yet ready to execute
   });
 
-  it('should subtract two numbers', () => {
+  it('should multiple two numbers', () => {
     fail(); // Simulate a failing test case
   });
+
+
 });
