@@ -16,33 +16,35 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
-1. The **'describe**` function:
-   A container for unit tests which also called a "test suite".
-1. The **'it'** function:
-   Specific an unit test for defined specification to be test.
-1. The **'pending'** function:
-   Indicates to jasmine that this test is not yet ready to execute.
-1. The **'fail'** function:
-   Simulate a failing unit test.
-1. The **'xdescribe'** function:
-   Same as 'describe' but in **pending** mode – mark all unit tests as pending. 
-1. The **'xit'** function:
-   Same as 'it' but in **pending** mode – mark this unit test as pending.
-1. The **'fdescribe'** function:
-   Same as 'describe' but in focus mode – ignore all test suites and unit tests which non-focused.
-1. The **'fit'** function:
-   Same as 'it' but in focus mode – ignore all test suites and unit tests which non-focused.
-1. The **'expect'** function:
-   Create an expectation for an unit test.
-   1. expect(result).**toBe**(4);
-   1. expect(logger.log).**toHaveBeenCalledTimes**(1);
-1. The **'jasmine.createSpyObj'** function:
-   Spy (mock) an object and his functions.
-1. The **'spyOn'** function:
-   Replace an existing function with new one and also monitoring this function.
-1. The **'beforeEach'** function:
-   Runs before each unit test ('it' function) – using for common initialization.
-1. The **'ng test [--no-watch]'** command:
-   Runs all application's test suites.
+1. The **&#39;describe** ` function:
+ A container for unit tests which also called a &quot;test suite&quot;.
+2. The **&#39;it&#39;** function:
+Specific an unit test for defined specification to be test.
+3. The **&#39;pending&#39;** function:
+ Indicates to jasmine that this test is not yet ready to execute.
+4. The **&#39;fail&#39;** function:
+ Simulate a failing unit test.
+5. The **&#39;xdescribe&#39;** function:
+ Same as &#39;describe&#39; but in **pending** mode – mark all unit tests as pending.
+6. The **&#39;xit&#39;** function:
+ Same as &#39;it&#39; but in **pending** mode – mark this unit test as pending.
+7. The **&#39;fdescribe&#39;** function:
+ Same as &#39;describe&#39; but in focus mode – ignore all test suites and unit tests which non-focused.
+8. The **&#39;fit&#39;** function:
+Same as &#39;it&#39; but in focus mode – ignore all test suites and unit tests which non-focused.
+9. The **&#39;expect&#39;** function:
+Create an expectation for an unit test.
+  1. expect(result). **toBe** (4);
+  2. expect(logger.log). **toHaveBeenCalledTimes** (1);
+10. The **&#39;jasmine.createSpyObj&#39;** function:
+Spy (mock) an object and his functions.
+11. The **&#39;spyOn&#39;** function:
+Replace an existing function with new one and also monitoring this function.
+12. The **&#39;beforeEach&#39;** function:
+ Runs before each unit test (&#39;it&#39; function) – using for common initialization.
+13. The **&#39;ng test [--no-watch]&#39;** command:
+Runs all application&#39;s test suites.
+14. **'HttpClientTestingModule'** – Provider for to mocking HttpClient.
+15. **'HttpTestingController'** – Supply an expectation functions for testing API&#39;s behavior.
 
 
