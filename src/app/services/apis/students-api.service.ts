@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IStudent } from './apis-interfaces';
+import { map } from 'rxjs/operators';
+import { IApiResponse, IStudent } from './apis-interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,9 @@ export class StudentsApiService {
   
   public getAllStudents() {
     const url: string = "/api/students";
-    return this.http.get<IStudent[]>(url);
+    return this.http.get<IApiResponse<IStudent[]>>(url).pipe(
+      map(response => response.data)
+    );
   }
 }
+
