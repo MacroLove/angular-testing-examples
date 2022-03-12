@@ -12,9 +12,11 @@ export class StudentsApiService {
 
   }
 
-  public getStudentById(studentId: string) {
+  public getStudentById(studentId: number) {
     const url: string = `/api/students/${studentId}`;
-    return this.http.get<IStudent>(url);
+    return this.http.get<IApiResponse<IStudent>>(url).pipe(
+      map(response => response.data)
+    );
   }
   
   public getAllStudents() {
@@ -22,6 +24,13 @@ export class StudentsApiService {
     return this.http.get<IApiResponse<IStudent[]>>(url).pipe(
       map(response => response.data)
     );
+  }
+
+  public saveStudent(studentId: number, studentChanges: Partial<IStudent>) {
+    const url: string = `/api/students/${studentId}`;
+    return this.http.put<IApiResponse<IStudent>>(url, studentChanges).pipe(
+      map(response => response.data)
+    );;
   }
 }
 
