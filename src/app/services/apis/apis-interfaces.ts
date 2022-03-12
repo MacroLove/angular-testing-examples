@@ -8,3 +8,9 @@ export interface IStudent {
     birthDate?: Date;
     group?: string;
 }
+
+export interface ILesson {
+    id?: number;
+    description?: string;
+    studentsIds?: number[];
+}
