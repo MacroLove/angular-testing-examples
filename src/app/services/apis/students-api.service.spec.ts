@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { StudentsApiService } from './students-api.service';
-import { STUDENTS } from 'src/testing/apis-mocks';
+import { LESSONS, STUDENTS } from 'src/testing/apis-mocks';
+import { IStudent } from './apis-interfaces';
 
 describe('StudentsApiService', () => {
   let service: StudentsApiService;
@@ -21,6 +22,12 @@ describe('StudentsApiService', () => {
     service = TestBed.inject(StudentsApiService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
+
+
+  afterEach(() => {
+    httpTestingController.verify(); // Make sure no real request is made
+  });
+
 
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -40,4 +47,70 @@ describe('StudentsApiService', () => {
 
     requestTest.flush({ data: STUDENTS });
   });
+
+  it('should retrive a student by id', () => {
+    service.getStudentById(5).subscribe(student => {
+      expect(student).toBeTruthy();
+      expect(student.id).toBe(5);
+    });
+
+    // Expect single request to a given url:
+    const requestTest = httpTestingController.expectOne('/api/students/5');
+    expect(requestTest.request.method).toBe("GET");
+
+    requestTest.flush({ data: STUDENTS.find(student => student.id === 5) });
+  });
+
+  it('should save the student data', () => {
+    const studentChanges: Partial<IStudent> = { name: 'Hadar' };
+    service.saveStudent(5, studentChanges).subscribe((student) => {
+      expect(student?.id).toBe(5);
+      expect(student?.name).toBe('Hadar');
+    });
+
+    const requestTest = httpTestingController.expectOne('/api/students/5');
+    expect(requestTest.request.method).toBe('PUT');
+    expect(requestTest.request.body.name).toBe('Hadar');
+
+    const student = STUDENTS.find(student => student.id === 5);
+    requestTest.flush({ data: { ...student, ...studentChanges } });
+  });
+
+  it('should give an error if save student data failed', () => {
+    const studentChanges: Partial<IStudent> = { name: 'Hadar' };
+    service.saveStudent(5, studentChanges).subscribe({
+      next: (student: IStudent) => {
+        fail('The save student should have an error');
+      },
+      error: (error: HttpErrorResponse) => {
+        expect(error.status).toBe(500);
+      }
+    });
+
+    const requestTest = httpTestingController.expectOne('/api/students/5');
+    expect(requestTest.request.method).toBe('PUT');
+    requestTest.flush('save student failed', { status: 500, statusText: 'Internal server error' });
+  });
+
+  it('shold retrive a list of lessons', () => {
+    service.getStudentLessons(5).subscribe((lessons) => {
+      expect(lessons).toBeTruthy();
+      expect(lessons.length).toBe(3);
+    });
+
+    const requestTest = httpTestingController.expectOne((req) => req.url === '/api/lessons');
+    expect(requestTest.request.method).toBe("GET");
+    
+    expect(requestTest.request.params.get('studentId')).toBe('5');
+    expect(requestTest.request.params.get('searchText')).toBe('');
+    expect(requestTest.request.params.get('sortOrder')).toBe('asc');
+    expect(requestTest.request.params.get('pageNumber')).toBe('0');
+    expect(requestTest.request.params.get('pageSize')).toBe('3');
+    
+    const lessonOfStudent = LESSONS.filter(lesson => lesson.studentsIds?.indexOf(5) !== -1);
+    requestTest.flush({ data: lessonOfStudent });
+  });
+
+
+
 });
