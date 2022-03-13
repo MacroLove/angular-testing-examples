@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { CoursesModule } from 'src/app/pages/courses/courses.module';
+import { COURSES } from 'src/testing/apis-mocks';
 
 import { CoursesComponent } from './courses.component';
 
@@ -8,15 +11,14 @@ describe('CoursesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CoursesComponent ]
+      imports: [CoursesModule]
     })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CoursesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    .compileComponents()
+    .then(() => {
+      fixture = TestBed.createComponent(CoursesComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
   });
 
   it('should create', () => {
