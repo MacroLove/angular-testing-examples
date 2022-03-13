@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesModule } from 'src/app/features/courses/courses.module';
-import { CoursesApiService } from 'src/app/services/apis/courses-api.service';
 import { MOCK_COURSES } from 'src/testing/apis-mocks';
 
 import { CoursesComponent } from './courses.component';

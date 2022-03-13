@@ -1,15 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ICourse } from 'src/app/services/apis/apis-interfaces';
-import { CoursesApiService } from 'src/app/services/apis/courses-api.service';
 
 @Component({
+  selector: 'courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: ['./courses.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoursesComponent implements OnInit {
-  
   @Input() courses?: ICourse[];
-
+  
   constructor() { }
 
   ngOnInit(): void {
