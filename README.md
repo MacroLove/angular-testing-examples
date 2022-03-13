@@ -16,6 +16,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
+**Common Testing**** :**
+
 1. The **&#39;describe** ` function:
  A container for unit tests which also called a &quot;test suite&quot;.
 2. The **&#39;it&#39;** function:
@@ -42,9 +44,23 @@ Spy (mock) an object and his functions.
 Replace an existing function with new one and also monitoring this function.
 12. The **&#39;beforeEach&#39;** function:
  Runs before each unit test (&#39;it&#39; function) – using for common initialization.
-13. The **&#39;ng test [--no-watch]&#39;** command:
+13. The **&#39;afterEach&#39;** function:
+ Run after each unit test (&#39;it&#39; function) = using for common code to be execute after the unit test is done.
+14. The **&#39;ng test [--no-watch]&#39;** command:
 Runs all application&#39;s test suites.
-14. **'HttpClientTestingModule'** – Provider for to mocking HttpClient.
-15. **'HttpTestingController'** – Supply an expectation functions for testing API&#39;s behavior.
 
+**API Testing**** :**
 
+1. **&#39;HttpClientTestingModule&#39;** – Provider for to mocking HttpClient.
+2. **&#39;HttpTestingController&#39;** – Supply an expectation functions for testing API&#39;s behavior.
+  1. **&#39;expectOne(&#39;api/path&#39;)&#39;** – expect that was made only one request to the given URL parameter.
+  2. **&#39;verify&#39;** – Prevents from the request is NOT a real one.
+
+**Component Testing**** :**
+
+1. When calling &#39;TestBed.configureTestingModule&#39; **import the module** of the component.
+2. **&#39;const fixture = TestBed.createComponent(MyComponent)&#39;** to create fixture.
+3. Then, **&#39;const component = fixture.componentInstance;&#39;** to get the instance of the component.
+4. After component&#39;s property change – call **&#39;fixture.detectChanges();&#39;**.
+5. Example of querying DOM elements: **&#39;fixture.debugElement.queryAll(By.css(&#39;.card));&#39;**.
+6.
