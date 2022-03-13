@@ -36,8 +36,8 @@ Specific an unit test for defined specification to be test.
 Same as &#39;it&#39; but in focus mode – ignore all test suites and unit tests which non-focused.
 9. The **&#39;expect&#39;** function:
 Create an expectation for an unit test.
-  1. expect(result). **toBe** (4);
-  2. expect(logger.log). **toHaveBeenCalledTimes** (1);
+  9.1. expect(result). **toBe** (4);
+  9.2. expect(logger.log). **toHaveBeenCalledTimes** (1);
 10. The **&#39;jasmine.createSpyObj&#39;** function:
 Spy (mock) an object and his functions.
 11. The **&#39;spyOn&#39;** function:
@@ -53,8 +53,8 @@ Runs all application&#39;s test suites.
 
 1. **&#39;HttpClientTestingModule&#39;** – Provider for to mocking HttpClient.
 2. **&#39;HttpTestingController&#39;** – Supply an expectation functions for testing API&#39;s behavior.
-  1. **&#39;expectOne(&#39;api/path&#39;)&#39;** – expect that was made only one request to the given URL parameter.
-  2. **&#39;verify&#39;** – Prevents from the request is NOT a real one.
+  2.1. **&#39;expectOne(&#39;api/path&#39;)&#39;** – expect that was made only one request to the given URL parameter.
+  2.2. **&#39;verify&#39;** – Prevents from the request is NOT a real one.
 
 **Component Testing:**
 
