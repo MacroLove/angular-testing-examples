@@ -15,7 +15,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
-
 **Common Testing:**
 
 1. The **'describe**` function:
@@ -38,6 +37,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
    Create an expectation for an unit test.
    1. expect(result).**toBe**(4);
    1. expect(logger.log).**toHaveBeenCalledTimes**(1);
+   1. expect(something). **toBeInstanceOf**(Date);
 1. The **'jasmine.createSpyObj'** function:
    Spy (mock) an object and his functions.
 1. The **'spyOn'** function:
@@ -63,5 +63,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 1. Then, **'const component = fixture.componentInstance;'** to get the instance of the component.
 1. After component's property change – call **'fixture.detectChanges();'**.
 1. Example of querying DOM elements: **'fixture.debugElement.queryAll(By.css('.card));'**.
+1. Add **'NoopAnimationsModule'** to imports will prevents animations while testing.
 
 
