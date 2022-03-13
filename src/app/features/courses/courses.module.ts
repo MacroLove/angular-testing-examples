@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { CoursesRoutingModule } from './courses-routing.module';
-import { CoursesComponent } from 'src/app/pages/courses/courses.component';
+import { CoursesComponent } from 'src/app/features/courses/courses.component';
 
 
 @NgModule({
@@ -10,8 +8,7 @@ import { CoursesComponent } from 'src/app/pages/courses/courses.component';
     CoursesComponent
   ],
   imports: [
-    CommonModule,
-    CoursesRoutingModule
+    CommonModule
   ]
 })
 export class CoursesModule { }

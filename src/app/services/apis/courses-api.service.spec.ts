@@ -36,7 +36,7 @@ describe('CoursesApiService', () => {
   it('should retrive all courses', () => {
     service.getAllCourses().subscribe(courses => {
       expect(courses).toBeTruthy();
-      expect(courses.length).toBe(5);
+      expect(courses.length).toBe(MOCK_COURSES.length);
       const course = courses.find(course => course.id === 2);
       expect(course?.name).toBe(MOCK_COURSES.find(c => c.id === 2)?.name);
     });
@@ -93,9 +93,11 @@ describe('CoursesApiService', () => {
   });
 
   it('shold retrive a list of lessons', () => {
+    const lessonsOfCourse = MOCK_LESSONS.filter(lesson => lesson.courseId === 5);
+
     service.getLessons(5).subscribe((lessons) => {
       expect(lessons).toBeTruthy();
-      expect(lessons.length).toBe(3);
+      expect(lessons.length).toBe(lessonsOfCourse.length);
     });
 
     const requestTest = httpTestingController.expectOne((req) => req.url === '/api/lessons');
@@ -107,7 +109,6 @@ describe('CoursesApiService', () => {
     expect(requestTest.request.params.get('pageNumber')).toBe('0');
     expect(requestTest.request.params.get('pageSize')).toBe('3');
     
-    const lessonsOfCourse = MOCK_LESSONS.filter(lesson => lesson.courseId === 5);
     requestTest.flush({ data: lessonsOfCourse });
   });
 

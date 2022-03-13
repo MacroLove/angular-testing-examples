@@ -4,9 +4,8 @@ export interface IApiResponse<TData = any> {
 
 export interface ICourse {
     id?: number;
-    name?: string;
-    birthDate?: Date;
-    group?: string;
+    name: string;
+    isAdvanced: boolean;
 }
 
 export interface ILesson {

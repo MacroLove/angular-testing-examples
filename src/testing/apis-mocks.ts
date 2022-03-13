@@ -3,23 +3,33 @@ import { ILesson, ICourse } from "src/app/services/apis/apis-interfaces";
 export const MOCK_COURSES: ICourse[] = [
     {
         id: 1,
-        name: 'Angular Testing Course'
+        name: 'Angular Testing Course',
+        isAdvanced: true
     },
     {
         id: 2,
-        name: 'Angular - The Complete Guide'
+        name: 'Angular - The Complete Guide',
+        isAdvanced: true
     },
     {
         id: 3,
-        name: 'The modern Angular Bootcamp'
+        name: 'The modern Angular Bootcamp',
+        isAdvanced: false
     },
     {
         id: 4,
-        name: 'Angular & NodeJS'
+        name: 'Angular & NodeJS',
+        isAdvanced: true
     },
     {
         id: 5,
-        name: 'Angular Forms In Depth'
+        name: 'Angular Forms In Depth',
+        isAdvanced: false
+    },
+    {
+        id: 6,
+        name: 'Angular first steps for beginners',
+        isAdvanced: false
     }
 ];
 
