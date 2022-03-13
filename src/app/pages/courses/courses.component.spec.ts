@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CoursesModule } from 'src/app/pages/courses/courses.module';
-import { COURSES } from 'src/testing/apis-mocks';
+import { MOCK_COURSES } from 'src/testing/apis-mocks';
 
 import { CoursesComponent } from './courses.component';
 

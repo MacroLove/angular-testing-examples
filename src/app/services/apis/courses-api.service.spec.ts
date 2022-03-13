@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { CoursesApiService } from './courses-api.service';
-import { LESSONS, COURSES } from 'src/testing/apis-mocks';
+import { MOCK_LESSONS, MOCK_COURSES } from 'src/testing/apis-mocks';
 import { ICourse } from './apis-interfaces';
 
 describe('CoursesApiService', () => {
@@ -38,14 +38,14 @@ describe('CoursesApiService', () => {
       expect(courses).toBeTruthy();
       expect(courses.length).toBe(5);
       const course = courses.find(course => course.id === 2);
-      expect(course?.name).toBe(COURSES.find(c => c.id === 2)?.name);
+      expect(course?.name).toBe(MOCK_COURSES.find(c => c.id === 2)?.name);
     });
 
     // Expect single request to a given url:
     const requestTest = httpTestingController.expectOne('/api/courses');
     expect(requestTest.request.method).toBe("GET");
 
-    requestTest.flush({ data: COURSES });
+    requestTest.flush({ data: MOCK_COURSES });
   });
 
   it('should retrive a course by id', () => {
@@ -58,7 +58,7 @@ describe('CoursesApiService', () => {
     const requestTest = httpTestingController.expectOne('/api/courses/5');
     expect(requestTest.request.method).toBe("GET");
 
-    requestTest.flush({ data: COURSES.find(course => course.id === 5) });
+    requestTest.flush({ data: MOCK_COURSES.find(course => course.id === 5) });
   });
 
   it('should save the course data', () => {
@@ -72,7 +72,7 @@ describe('CoursesApiService', () => {
     expect(requestTest.request.method).toBe('PUT');
     expect(requestTest.request.body.name).toBe('Another Course Name');
 
-    const course = COURSES.find(course => course.id === 5);
+    const course = MOCK_COURSES.find(course => course.id === 5);
     requestTest.flush({ data: { ...course, ...courseChanges } });
   });
 
@@ -107,7 +107,7 @@ describe('CoursesApiService', () => {
     expect(requestTest.request.params.get('pageNumber')).toBe('0');
     expect(requestTest.request.params.get('pageSize')).toBe('3');
     
-    const lessonsOfCourse = LESSONS.filter(lesson => lesson.courseId === 5);
+    const lessonsOfCourse = MOCK_LESSONS.filter(lesson => lesson.courseId === 5);
     requestTest.flush({ data: lessonsOfCourse });
   });
 
