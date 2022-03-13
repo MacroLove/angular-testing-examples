@@ -2,7 +2,7 @@ export interface IApiResponse<TData = any> {
     data: TData;
 }
 
-export interface IStudent {
+export interface ICourse {
     id?: number;
     name?: string;
     birthDate?: Date;
@@ -12,5 +12,5 @@ export interface IStudent {
 export interface ILesson {
     id?: number;
     description?: string;
-    studentsIds?: number[];
+    courseId?: number;
 }
