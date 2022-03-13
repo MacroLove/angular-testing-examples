@@ -14,4 +14,7 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public editCourse(course: ICourse) {
+    
+  }
 }
