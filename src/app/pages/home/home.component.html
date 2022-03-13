@@ -1,2 +1,5 @@
-<div></div>
-<courses></courses>
+<div>Beginner Courses:</div>
+<courses [courses]="beginnerCourses | async"></courses>
+
+<div>Advanced Courses:</div>
+<courses [courses]="advancedCourses | async"></courses>

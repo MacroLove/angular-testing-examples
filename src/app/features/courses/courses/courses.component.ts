@@ -8,8 +8,8 @@ import { ICourse } from 'src/app/services/apis/apis-interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoursesComponent implements OnInit {
-  @Input() courses?: ICourse[];
-  
+  @Input() courses: ICourse[] | null = null;
+
   constructor() { }
 
   ngOnInit(): void {
