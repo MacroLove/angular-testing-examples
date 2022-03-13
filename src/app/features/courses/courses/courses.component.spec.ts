@@ -14,11 +14,11 @@ describe('CoursesComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CoursesModule, NoopAnimationsModule]
     })
-    .compileComponents()
-    .then(() => {
-      fixture = TestBed.createComponent(CoursesComponent);
-      component = fixture.componentInstance;
-    });
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(CoursesComponent);
+        component = fixture.componentInstance;
+      });
   });
 
   it('should create', () => {
