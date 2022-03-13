@@ -16,7 +16,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
-**Common Testing**** :**
+**Common Testing:**
 
 1. The **&#39;describe** ` function:
  A container for unit tests which also called a &quot;test suite&quot;.
@@ -49,18 +49,17 @@ Replace an existing function with new one and also monitoring this function.
 14. The **&#39;ng test [--no-watch]&#39;** command:
 Runs all application&#39;s test suites.
 
-**API Testing**** :**
+**API Testing:**
 
 1. **&#39;HttpClientTestingModule&#39;** – Provider for to mocking HttpClient.
 2. **&#39;HttpTestingController&#39;** – Supply an expectation functions for testing API&#39;s behavior.
   1. **&#39;expectOne(&#39;api/path&#39;)&#39;** – expect that was made only one request to the given URL parameter.
   2. **&#39;verify&#39;** – Prevents from the request is NOT a real one.
 
-**Component Testing**** :**
+**Component Testing:**
 
 1. When calling &#39;TestBed.configureTestingModule&#39; **import the module** of the component.
 2. **&#39;const fixture = TestBed.createComponent(MyComponent)&#39;** to create fixture.
 3. Then, **&#39;const component = fixture.componentInstance;&#39;** to get the instance of the component.
 4. After component&#39;s property change – call **&#39;fixture.detectChanges();&#39;**.
 5. Example of querying DOM elements: **&#39;fixture.debugElement.queryAll(By.css(&#39;.card));&#39;**.
-6.
