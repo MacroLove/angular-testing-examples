@@ -58,8 +58,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 1. **'HttpTestingController'** – Supply an expectation functions for testing API's behavior.
    1. **'expectOne('api/path')'** – expect that was made only one request to the given URL parameter.
    1. **'verify'** – Prevents from the request is NOT a real one.
+**
 
-**Dump Component Testing:**
+
+**Component Testing:**
 
 1. When calling 'TestBed.configureTestingModule' **import the module** of the component.
 1. **'const fixture = TestBed.createComponent(MyComponent)'** to create fixture.
@@ -67,9 +69,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 1. After component's property change – call **'fixture.detectChanges();'**.
 1. Example of querying DOM elements: **'fixture.debugElement.queryAll(By.css('.card));'**.
 1. Add **'NoopAnimationsModule'** to imports will prevents animations while testing.
-
-
-
-**Smart Component Testing:**
-
-
+1. The optional **'DoneFn'** parameter of 'it' function.
+   Allowing to notify when the unit test if done (usually needed from Asynchronous body, etc: setTimeout).
+1. The **'fakeAsync'**, **'tick'** and **'flush'** functions.
