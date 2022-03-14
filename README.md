@@ -41,8 +41,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 1. The **'jasmine.createSpyObj'** function:
    Spy (mock) an object and his functions.
    usage example:
-   courseApiServiceSpy = **jasmine.createSpyObj**(CoursesApiService, ['getAllCourses']);
-1. courseApiServiceSpy.getAllCourses.**and.returnValue**(of(MOCK\_COURSES));
+   1. courseApiServiceSpy = **jasmine.createSpyObj**(CoursesApiService, ['getAllCourses']);
+   1. courseApiServiceSpy.getAllCourses.**and.returnValue**(of(MOCK\_COURSES));
 1. The **'spyOn'** function:
    Replace an existing function with new one and also monitoring this function.
 1. The **'beforeEach'** function:
