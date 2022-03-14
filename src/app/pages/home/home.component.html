@@ -1,5 +1,14 @@
-<div>Beginner Courses:</div>
-<courses [courses]="beginnerCourses | async"></courses>
+<label>
+    <span>Show Only Advanced:</span>
+    <input class="only-advanced-checkbox" type="checkbox" [(ngModel)]="isShowAdvanced" />
+</label>
 
-<div>Advanced Courses:</div>
-<courses [courses]="advancedCourses | async"></courses>
+<div *ngIf="!isShowAdvanced" class="normal-courses">
+    <div>Beginner Courses:</div>
+    <courses [courses]="beginnerCourses | async"></courses>
+</div>
+
+<div *ngIf="isShowAdvanced" class="advanced-courses">
+    <div>Advanced Courses:</div>
+    <courses [courses]="advancedCourses | async"></courses>
+</div>

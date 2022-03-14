@@ -8,6 +8,7 @@ import { CoursesApiService } from 'src/app/services/apis/courses-api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public isShowAdvanced: boolean = false;
   public beginnerCourses: Observable<ICourse[]>;
   public advancedCourses: Observable<ICourse[]>;
 
