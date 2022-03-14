@@ -40,6 +40,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
    1. expect(something). **toBeInstanceOf**(Date);
 1. The **'jasmine.createSpyObj'** function:
    Spy (mock) an object and his functions.
+   usage example:
+   courseApiServiceSpy = **jasmine.createSpyObj**(CoursesApiService, ['getAllCourses']);
+1. courseApiServiceSpy.getAllCourses.**and.returnValue**(of(MOCK\_COURSES));
 1. The **'spyOn'** function:
    Replace an existing function with new one and also monitoring this function.
 1. The **'beforeEach'** function:
@@ -56,7 +59,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
    1. **'expectOne('api/path')'** – expect that was made only one request to the given URL parameter.
    1. **'verify'** – Prevents from the request is NOT a real one.
 
-**Component Testing:**
+**Dump Component Testing:**
 
 1. When calling 'TestBed.configureTestingModule' **import the module** of the component.
 1. **'const fixture = TestBed.createComponent(MyComponent)'** to create fixture.
@@ -64,5 +67,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 1. After component's property change – call **'fixture.detectChanges();'**.
 1. Example of querying DOM elements: **'fixture.debugElement.queryAll(By.css('.card));'**.
 1. Add **'NoopAnimationsModule'** to imports will prevents animations while testing.
+
+
+
+**Smart Component Testing:**
 
 
