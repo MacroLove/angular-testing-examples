@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
@@ -59,7 +59,7 @@ describe('HomeComponent', () => {
   });
 
 
-  it('should display only advanced courses on checkbox selected(clicked)', (/*done: DoneFn*/) => {
+  it('should display only advanced courses on checkbox selected(clicked)', () => {
     const advancedCheckbox = fixture.debugElement
       .query(By.css('.only-advanced-checkbox[type="checkbox"]'));
 
@@ -67,11 +67,10 @@ describe('HomeComponent', () => {
       return fail('should have checkbox element');
     }
 
+    // Note: This click doesn't doing any asynchronous task!
     advancedCheckbox.nativeElement.click();
     fixture.detectChanges();
 
-    // The setTimeout and DoneFn are need whenever the changes doesn't appears immediately:
-    // setTimeout(() => {
     const normalCoursesElement = fixture.debugElement
       .query(By.css('.normal-courses'));
     const advancedCoursesElement = fixture.debugElement
@@ -79,8 +78,74 @@ describe('HomeComponent', () => {
 
     expect(normalCoursesElement).toBeNull();
     expect(advancedCoursesElement).toBeTruthy();
-
-    //   done();
-    // }, 500);
   });
+
+
+
+
+  it('simulate asynchronous case test 1', (done: DoneFn) => {
+    let asyncDone: boolean = false;
+    
+    // Simulate asynchronous task need to be done before tests:
+    setTimeout(() => {
+      asyncDone = true;
+      expect(asyncDone).toBe(true);
+      done();
+    }, 50);
+  });
+
+  it('simulate asynchronous case test 2', fakeAsync(() => {
+    let asyncDone: boolean = false;
+
+    // Simulate asynchronous task need to be done before tests:
+    setTimeout(() => {
+      asyncDone = true;
+    }, 50);
+
+    // Simulate (immediately) an passing of 50ms:
+    tick(50);
+
+    expect(asyncDone).toBe(true);
+  }));
+
+
+  it('simulate asynchronous case test 3', fakeAsync(() => {
+    let asyncDone: boolean = false;
+
+    // Simulate asynchronous task need to be done before tests:
+    setTimeout(() => {
+      asyncDone = true;
+    }, 50);
+
+    // Simulate (immediately) the passing of all asynchronous tasks and return their simulated duration:
+    const simulatedPassedMS = flush();
+
+    expect(asyncDone).toBe(true);
+    expect(simulatedPassedMS).toBeLessThanOrEqual(400);
+  }));
+
+  it('simulate asynchronous case test 4', fakeAsync(() => {
+    let value: number = 0;
+
+    // Simulate micro asynchronous task need to be done before tests:
+    Promise.resolve().then(() => {
+      value += 3;
+    });
+
+    // Simulate (macro) 
+    setTimeout(() => {
+      value += 1;
+    }, 50);
+
+    // Simulate (immediately) the passing of all asynchronous micro tasks and return their simulated duration:
+    const simulatedPassedMS1 = flushMicrotasks();
+
+    expect(value).toBe(3);
+
+    // Simulate (immediately) the passing of all (reminded) asynchronous tasks and return their simulated duration:
+    const simulatedPassedMS2 = flush();
+
+    expect(value).toBe(4);
+  }));
+
 });
