@@ -71,4 +71,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 1. Add **'NoopAnimationsModule'** to imports will prevents animations while testing.
 1. The optional **'DoneFn'** parameter of 'it' function.
    Allowing to notify when the unit test if done (usually needed from Asynchronous body, etc: setTimeout).
-1. The **'fakeAsync'**, **'tick'** and **'flush'** functions.
+1. The **'fakeAsync'**, **'tick'**, **'flush'**, and **'flushMicrotasks'** functions.
+1. The **'waitForAsync'** function.
