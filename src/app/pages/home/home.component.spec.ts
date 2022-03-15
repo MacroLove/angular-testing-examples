@@ -68,6 +68,7 @@ describe('HomeComponent', () => {
     }
 
     // Note: This click doesn't doing any asynchronous task!
+    // if it's does doing asynchronous task then we should use fakeAsync and flush (see next simulated tasts)
     advancedCheckbox.nativeElement.click();
     fixture.detectChanges();
 
