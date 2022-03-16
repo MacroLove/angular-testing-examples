@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
@@ -84,7 +84,7 @@ describe('HomeComponent', () => {
 
 
 
-  it('simulate asynchronous case test 1', (done: DoneFn) => {
+  it('asynchronous test simulation 1 - DoneFn', (done: DoneFn) => {
     let asyncDone: boolean = false;
     
     // Simulate asynchronous task need to be done before tests:
@@ -95,7 +95,7 @@ describe('HomeComponent', () => {
     }, 50);
   });
 
-  it('simulate asynchronous case test 2', fakeAsync(() => {
+  it('asynchronous test simulation 2 - fakeAsync & tick', fakeAsync(() => {
     let asyncDone: boolean = false;
 
     // Simulate asynchronous task need to be done before tests:
@@ -110,7 +110,7 @@ describe('HomeComponent', () => {
   }));
 
 
-  it('simulate asynchronous case test 3', fakeAsync(() => {
+  it('asynchronous test simulation 3 - fakeAsync & flush', fakeAsync(() => {
     let asyncDone: boolean = false;
 
     // Simulate asynchronous task need to be done before tests:
@@ -125,7 +125,7 @@ describe('HomeComponent', () => {
     expect(simulatedPassedMS).toBeLessThanOrEqual(400);
   }));
 
-  it('simulate asynchronous case test 4', fakeAsync(() => {
+  it('asynchronous test simulation 4 - fakeAsync & flushMicrotasks (Promise)', fakeAsync(() => {
     let value: number = 0;
 
     // Simulate micro asynchronous task need to be done before tests:
@@ -133,20 +133,38 @@ describe('HomeComponent', () => {
       value += 3;
     });
 
-    // Simulate (macro) 
+    // Simulate (macro) asynchronous task need to be done before tests:
     setTimeout(() => {
       value += 1;
     }, 50);
 
     // Simulate (immediately) the passing of all asynchronous micro tasks and return their simulated duration:
     const simulatedPassedMS1 = flushMicrotasks();
-
     expect(value).toBe(3);
 
     // Simulate (immediately) the passing of all (reminded) asynchronous tasks and return their simulated duration:
     const simulatedPassedMS2 = flush();
-
     expect(value).toBe(4);
   }));
 
+  it('asynchronous test simulation 5 - waitForAsync', waitForAsync(() => {
+    let value: number = 0;
+
+    // Simulate micro asynchronous task need to be done before tests:
+    Promise.resolve().then(() => {
+      value += 3;
+    });
+
+    // Simulate (macro) asynchronous task:
+    // Note: with waitForAsync it's NOT possible to test value after macro asynchronous task!
+    setTimeout(() => {
+      value += 1;
+    }, 50);
+
+    // fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(value).toBe(3);
+    });
+
+  }));
 });
