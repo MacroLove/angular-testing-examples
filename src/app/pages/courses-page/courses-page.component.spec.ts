@@ -2,30 +2,30 @@ import { ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick, wai
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
-import { HomeModule } from 'src/app/pages/home/home.module';
+import { CoursesPageModule } from 'src/app/pages/courses-page/courses-page.module';
 import { CoursesApiService } from 'src/app/services/apis/courses-api.service';
 import { MOCK_COURSES } from 'src/testing/apis-mocks';
 
-import { HomeComponent } from './home.component';
+import { CoursesPageComponent } from './courses-page.component';
 
 describe('HomeComponent', () => {
   let courseApiServiceSpy: jasmine.SpyObj<CoursesApiService>;
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  let component: CoursesPageComponent;
+  let fixture: ComponentFixture<CoursesPageComponent>;
 
   beforeEach(async () => {
     courseApiServiceSpy = jasmine.createSpyObj(CoursesApiService, ['getAllCourses']);
     courseApiServiceSpy.getAllCourses.and.returnValue(of(MOCK_COURSES));
 
     await TestBed.configureTestingModule({
-      imports: [HomeModule, NoopAnimationsModule],
+      imports: [CoursesPageModule, NoopAnimationsModule],
       providers: [
         { provide: CoursesApiService, useValue: courseApiServiceSpy }
       ]
     })
       .compileComponents()
       .then(() => {
-        fixture = TestBed.createComponent(HomeComponent);
+        fixture = TestBed.createComponent(CoursesPageComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
       });

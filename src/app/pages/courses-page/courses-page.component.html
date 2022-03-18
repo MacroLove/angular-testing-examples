@@ -3,12 +3,12 @@
     <input class="only-advanced-checkbox" type="checkbox" [(ngModel)]="isShowAdvanced" />
 </label>
 
-<div *ngIf="!isShowAdvanced" class="normal-courses">
+<div *ngIf="!isShowAdvanced" class="beginners-courses">
     <div>Beginner Courses:</div>
-    <courses [courses]="beginnerCourses | async"></courses>
+    <courses-list [courses]="beginnerCourses | async"></courses-list>
 </div>
 
 <div *ngIf="isShowAdvanced" class="advanced-courses">
     <div>Advanced Courses:</div>
-    <courses [courses]="advancedCourses | async"></courses>
+    <courses-list [courses]="advancedCourses | async"></courses-list>
 </div>

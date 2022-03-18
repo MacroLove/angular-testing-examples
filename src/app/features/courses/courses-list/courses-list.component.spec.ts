@@ -1,22 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { CoursesModule } from 'src/app/features/courses/courses.module';
+import { CourseslISTModule } from 'src/app/features/courses/courses-list.module';
 import { MOCK_COURSES } from 'src/testing/apis-mocks';
 
-import { CoursesComponent } from './courses.component';
+import { CoursesListComponent } from './courses-list.component';
 
 describe('CoursesComponent', () => {
-  let component: CoursesComponent;
-  let fixture: ComponentFixture<CoursesComponent>;
+  let component: CoursesListComponent;
+  let fixture: ComponentFixture<CoursesListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CoursesModule, NoopAnimationsModule]
+      imports: [CourseslISTModule, NoopAnimationsModule]
     })
       .compileComponents()
       .then(() => {
-        fixture = TestBed.createComponent(CoursesComponent);
+        fixture = TestBed.createComponent(CoursesListComponent);
         component = fixture.componentInstance;
       });
   });
