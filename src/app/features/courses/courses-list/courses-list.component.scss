@@ -1,0 +1,45 @@
+:host {
+    display: block;
+}
+
+.course.card {
+    padding: 10px;
+    border-bottom: 1px solid #cdcdcd;
+}
+.course.card:last-child {
+    border-bottom: 0;
+}
+.course.card .details {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 250px - 62px);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.course.card .image-wrapper {
+    display: inline-block;
+    width: 250px;
+}
+.course.card .image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.course.card .name {
+    font-weight: bold;
+    font-size: 1.4em;
+}
+.course.card .actions {
+    display: inline-block;
+    width: 62px;
+    vertical-align: top;
+}
+.course.card .edit-button {
+    background: #00a142;
+    border: 0px;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 1.2em;
+    cursor: pointer;
+    width: 62px;
+}
