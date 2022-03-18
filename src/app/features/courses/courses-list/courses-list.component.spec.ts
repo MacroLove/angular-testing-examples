@@ -40,9 +40,10 @@ describe('CoursesComponent', () => {
     fixture.detectChanges();
 
     const firstCard = fixture.debugElement.query(By.css('.card.course:first-child'));
-    const cardHeader = firstCard.query(By.css('.header'));
+    const cardHeader = firstCard.query(By.css('.name'));
+
     expect(firstCard).toBeTruthy();
-    expect(cardHeader.nativeElement).toBeInstanceOf(HTMLDivElement);
+    expect(firstCard.nativeElement).toBeInstanceOf(HTMLDivElement);
     expect(cardHeader.nativeElement.textContent).toBe(component.courses[0].name);
   });
 });

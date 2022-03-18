@@ -37,7 +37,7 @@ describe('HomeComponent', () => {
 
   it('should display only not advanced courses', () => {
     const normalCoursesElement = fixture.debugElement
-      .query(By.css('.normal-courses'));
+      .query(By.css('.beginners-courses'));
     const advancedCoursesElement = fixture.debugElement
       .query(By.css('.advanced-courses'));
 
@@ -50,7 +50,7 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
 
     const normalCoursesElement = fixture.debugElement
-      .query(By.css('.normal-courses'));
+      .query(By.css('.beginners-courses'));
     const advancedCoursesElement = fixture.debugElement
       .query(By.css('.advanced-courses'));
 
@@ -73,7 +73,7 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
 
     const normalCoursesElement = fixture.debugElement
-      .query(By.css('.normal-courses'));
+      .query(By.css('.beginners-courses'));
     const advancedCoursesElement = fixture.debugElement
       .query(By.css('.advanced-courses'));
 
