@@ -95,9 +95,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
       "start:prod": "angular-http-server --path dist/ -p 4200"
    1. Run the command: **'npm install --save-dev start-server-and-test'**.
 1. **Configure scripts in package.json for production:**
-   "build:prod": "ng build -c=production"
-   "start-the-build": "angular-http-server --path dist/ -p 4200"
-   "build-and-start:prod": "npm run build:prod && npm run start-the-build"
-   "cypress:run": "cypress run"
-   "e2e-the-build": "start-server-and-test start-the-build http://localhost:4200 cypress:run"
+   Add the following commands to scripts:
+   1. "build:prod": "ng build -c=production"
+   1. "start-the-build": "angular-http-server --path dist/ -p 4200"
+   1. "build-and-start:prod": "npm run build:prod && npm run start-the-build"
+      "cypress:run": "cypress run"
+   1. "e2e-the-build": "start-server-and-test start-the-build http://localhost:4200 cypress:run"
 
