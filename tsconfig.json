@@ -23,6 +23,7 @@
       "dom"
     ]
   },
+  "include": ["src", "index.ts"],
   "angularCompilerOptions": {
     "strict": true,
     "enableI18nLegacyMessageIdFormat": false,

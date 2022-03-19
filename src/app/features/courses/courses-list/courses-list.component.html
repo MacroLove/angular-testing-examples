@@ -1,0 +1,19 @@
+<ng-container *ngIf="courses?.[0] ; else noCourses">
+    <div class="card course" *ngFor="let course of courses">
+        <div class="image-wrapper">
+            <img [src]="'/assets/images/courses/' + course.imageName" [alt]="course.imageName" />
+        </div>
+        <div class="details">
+            <div class="name">{{course.name}}</div>
+            <div class="description">{{course.description}}</div>
+        </div>
+        <div class="actions">
+            <button class="edit-button" (click)="editCourse(course)">Edit</button>
+        </div>
+    </div>
+</ng-container>
+<ng-template #noCourses>
+    <div class="no-courses">
+        There is no courses to display
+    </div>
+</ng-template>

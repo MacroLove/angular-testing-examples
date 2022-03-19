@@ -5,6 +5,8 @@ export interface IApiResponse<TData = any> {
 export interface ICourse {
     id?: number;
     name: string;
+    description: string;
+    imageName: string;
     isAdvanced: boolean;
 }
 
