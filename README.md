@@ -72,4 +72,32 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 1. The optional **'DoneFn'** parameter of 'it' function.
    Allowing to notify when the unit test if done (usually needed from Asynchronous body, etc: setTimeout).
 1. The **'fakeAsync'**, **'tick'**, **'flush'**, and **'flushMicrotasks'** functions.
-1. The **'waitForAsync'** function.
+1. The **'waitForAsync'** and **'fixture.whenStable'** functions.
+   whenStable return Promise which will trigger when all promises(only) are done.
+   Allowing testing an actual (not fake) http request (Integration Test).
+   Note: calling tick, flush, flushMicrotasks is NOT possible when using waitForAsync.
+
+**End to End (E2E) Testing using Cypress:**
+
+1. Run **'npm install --dev cypress'** command to install cypress.
+1. Add '"e2e:open": "cypress open"' and '"e2e:run": "cypress run"' to package.json file.
+   Run 'npm run e2e:open'
+
+**Extras:**
+
+1. **Create testing code coverage summary:**
+   Run **'ng test --watch=false --code-coverage'**.
+   Creates a 'coverage' folder with small website that showing the tests code coverage of the application.
+   Note: Open 'index.html' file with browser.
+1. **Preparing for production testing (CI):**
+   1. Run the command: **'npm install --save-dev angular-http-server'**.
+   1. Add the following script in package.json file:
+      "start:prod": "angular-http-server --path dist/ -p 4200"
+   1. Run the command: **'npm install --save-dev start-server-and-test'**.
+1. **Configure scripts in package.json for production:**
+   "build:prod": "ng build -c=production"
+   "start-the-build": "angular-http-server --path dist/ -p 4200"
+   "build-and-start:prod": "npm run build:prod && npm run start-the-build"
+   "cypress:run": "cypress run"
+   "e2e-the-build": "start-server-and-test start-the-build http://localhost:4200 cypress:run"
+
