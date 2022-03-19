@@ -3,12 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "build": "ng build -c=development",
+    "build:prod": "ng build -c=production",
     "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start-the-build": "angular-http-server --path dist/ -p 4200",
+    "build-and-start": "npm run build && npm run start-the-build",
+    "build-and-start:prod": "npm run build:prod && npm run start-the-build",
+    "watch": "ng build --watch -c=development",
     "test": "ng test",
-    "e2e:open": "cypress open",
-    "e2e:run": "cypress run"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --config video=false",
+    "e2e-the-build": "start-server-and-test start-the-build http://localhost:4200 cypress:run"
   },
   "private": true,
   "dependencies": {
